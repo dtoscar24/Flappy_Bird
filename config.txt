@@ -27,10 +27,10 @@ reset_on_extinction   = False
 
 # Funció d'activació per defecte que farà servir la xarxa neuronal 
 # que controla al genoma
-activation_default      = tanh
+activation_default      = sigmoid
 
 # Probabilitat de canviar-se de funció d'activació (0.5 --> 50%)
-activation_mutate_rate  = 0.0
+activation_mutate_rate  = 0.5
 
 # L'altra funció d'activació que pot elegir la xarxa neuronal
 activation_options      = tanh
