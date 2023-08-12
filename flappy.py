@@ -19,16 +19,16 @@ while True:
 
     FINESTRA # Mostrem la finestra acabem de crear
 
-    # Obtenim les accions (event) fets per l'usuari, o sigui, nosaltres
+    # Obtenim cada acció (event) feta per l'usuari, o sigui, nosaltres
     for event in pygame.event.get():
         # Mirem si el tipus d'acció que hem fet és igual que la de sortir, 
         # és a dir, si hem clicat el botó de tancar (a dalt a la dreta)
         if event.type == pygame.QUIT:
-         # En el cas que sigui cert es tancarà la finestra
+         # En el cas que sigui cert, es tancarà la finestra
          pygame.quit()
          quit()'''
 
-# Carreguem i redimensionem les imatges de l'ocell i les fiquem a la llista imatges_ocell 
+# Carreguem i redimensionem les imatges de l'ocell i les fiquem a la llista imatges_ocells 
 imatges_ocells = [pygame.transform.scale2x(pygame.image.load(os.path.join("imatges", "ocell1.png"))),
                   pygame.transform.scale2x(pygame.image.load(os.path.join("imatges", "ocell2.png"))), 
                   pygame.transform.scale2x(pygame.image.load(os.path.join("imatges", "ocell3.png")))]
@@ -65,14 +65,14 @@ class Ocell:
 
     # Creem el mètode saltar() per al salt de l'ocell 
     def saltar(self):
-        self.velocitat = -10.5 # Velocitat cap a a dalt de l'ocell quan vola
+        self.velocitat = -10.5 # Velocitat cap a a dalt de l'ocell quan salta
         self.comptador_física = 0 # Comptador que serveix per a saber el 
         # temps transcorregut en cada salt que fa l'ocell
         self.altura = self.y # L'altura original de l'ocell abans del salt 
 
     # Creem el mètode moviment() el qual ens servirà per a fer el moviment vertical de l'ocell
     def moviment(self):
-        # Per cada frame(imatge), li sumarem +1 a self.comptador_física
+        # Per cada frame li sumarem +1 a self.comptador_física
         self.comptador_física += 1 # self.comptador_física = self.comptador_física + 1
 
         # Calculem el desplaçament (en píxels) cap a dalt o cap avall que farà l'ocell en un frame determinat
@@ -83,7 +83,7 @@ class Ocell:
         # Quan és 6: desplaçament = (-10.5 · 6) + (1.5 · (6^2)) = -63 + 54 = -9 (va cap a dalt)
         # Quan és 9: desplaçament = (-10.5 · 9) + (1.5 · (9^2)) = -94.5 + 121.5 = 27 (va cap avall)
         # Els càlculs que hem fet voldrà dir que l'ocell es mourà 9, 18 i 9 píxels cap a dalt i 27 píxels 
-        # cap avall en aquell frame (imatge). El valor de self.comptador_física tornarà a ser 0 quan l'ocell
+        # cap avall en aquell frame. El valor de self.comptador_física tornarà a ser 0 quan l'ocell
         # salti una altra vegada i, com a resultat, faríem de nou les operacions.
 
         # Fem dues condicions if per a limitar el moviment de l'ocell
@@ -131,7 +131,7 @@ class Ocell:
         # Mirem si el valor de comptador_imatge és menor o igual que la constant ANIMATION_TEMPS(5)
         if self.comptador_imatge <= self.ANIMATION_TEMPS:
             # En el cas que sigui cert, mostrarem la primera imatge(ocell1.png) de la llista OCELL.
-            # Aquesta foto ho guardarem a l'atribut imatge el qual ho emprarem més tard per a 
+            # Aquesta foto ho guardarem a l'atribut imatge, el qual ho emprarem més tard per a 
             # dibuixar l'ocell 
             self.imatge = self.OCELL[0] 
 
@@ -139,21 +139,21 @@ class Ocell:
         # En el cas que la primera condició sigui fals, veurem si es compleix la segona, és a dir, 
         # mirem si és menor o igual que ANIMATION_TEMPS però aquesta vegada multiplicat per 2 (5·2=10)
         elif self.comptador_imatge <= self.ANIMATION_TEMPS*2:
-            # En el cas que sigui cert, ensenyarem la segona imatge(ocell2.png)
+            # En el cas que sigui vertader, ensenyarem la segona imatge(ocell2.png)
             self.imatge = self.OCELL[1] 
 
         # Tercera condició:
-        # En el cas que la segona condició també sigui fals, observarem si es compleix que és menor o 
+        # En el cas que la segona condició també sigui fals, comprovarem si es compleix que és menor o 
         # igual que ANIMATION_TEMPS multiplicat per 3 (5·3=15)
         elif self.comptador_imatge <= self.ANIMATION_TEMPS*3:
-            # En el cas que sigui cert, mostrarem la tercera imatge(ocell3.png) 
+            # En el cas que això sigui cert, mostrarem la tercera imatge(ocell3.png) 
             self.imatge = self.OCELL[2] 
 
         # Quarta condició:
         # En el cas que la tercera condició encara sigui fals, mirem si es compleix que és menor o 
         # igual que ANIMATION_TEMPS multiplicat per 4 (5·4=20)
         elif self.comptador_imatge <= self.ANIMATION_TEMPS*4:
-            # En el cas que sigui cert, mostrarem una altra vegada la segona imatge(ocell2.png) 
+            # En el cas que això sigui vertader, mostrarem una altra vegada la segona imatge(ocell2.png) 
             self.imatge = self.OCELL[1] 
  
         # En el cas que tot l'anterior sigui fals farem una altra cosa:
@@ -189,7 +189,7 @@ class Ocell:
 # Creem la classe Columna
 class Columna:
     ESPAI = 200 # Establim l'espai que hi haurà entre la columna de dalt i la d'avall
-    VELOCITAT = 10 # Velocitat la qual anirà les dues columnes
+    VELOCITAT = 20 # Velocitat la qual anirà les dues columnes
 
     # Creem el mètode __init__() i li passem l'atribut x com a paràmetre:
     def __init__(self, x): 
