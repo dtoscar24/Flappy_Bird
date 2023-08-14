@@ -179,11 +179,11 @@ class Ocell:
         nou_rectangle = imatge_girada.get_rect(center=self.imatge.get_rect(topleft = (self.x, self.y)).center)
         # Dibuixem la imatge girada donant-li la finestra i, a més, li concretem la coordenada X i Y on es 
         # mostrarà en funció de l'atribut topleft del nou_rectangle
-        finestra.blit(imatge_girada, nou_rectangle.topleft)
+        finestra.blit(imatge_girada, ((nou_rectangle.topleft)))
 
-    # Definim un mètode per tal d'obtenir la màscara de bits de l'ocell
+    # Definim el mètode obtenir_mask per tal d'obtenir 
+    # la màscara de bits de l'ocell
     def obtenir_mask(self):
-        # Ens retorna la màscara de bits de la imatge de l'ocell
         return pygame.mask.from_surface(self.imatge) 
 
 # Creem la classe Columna
@@ -207,13 +207,13 @@ class Columna:
         self.passat = False # Establim que l'atribut passat serà False a l'inici, 
         # el qual ens servirà per a saber si l'ocell ha passat o no per les columnes
         self.establir_altura() # Generem l'altura de la columna de dalt i la d'avall 
-        # amb el mètode establir_altura() el qual ho crearem a continuació
+        # amb el mètode establir_altura(), el qual ho crearem a continuació
 
     # Creem el mètode establir_altura() per a crear l'altura de la 
     # columna de dalt i la d'avall
     def establir_altura(self):
 
-        # Creem un nombre enter que estigui en un rang de 50 i 200
+        # Creem un nombre enter que estigui en un rang d'entre 50 i 200
         self.altura = random.randrange(50, 200)
 
         # Calculem la coordenada Y de la columna de dalt
@@ -272,10 +272,10 @@ class Base:
 
     # Creem el mètode __init__() i rebrà l'atribut y com a paràmetre
     def __init__(self, y):
-        self.y = y # Posició Y de les dues bases, la qual ho establirem nosaltres
+        self.y = y # Posició Y de les dues bases, la qual serà la mateixa
         self.x1 = 0 # Posició X inicial de la primera base
-        self.x2 = self.AMPLADA # Posició X inicial de la segona base, la qual 
-        # estarà endarrere de la primera
+        self.x2 = self.AMPLADA # Posició X inicial de la segona base, la 
+        # qual estarà endarrere de la primera
 
     # Definim el mètode moviment() per al moviment de les dues bases
     def moviment(self):
@@ -285,21 +285,21 @@ class Base:
         # Fem la mateixa cosa però aquesta vegada amb la posició X de la segona 
         self.x2 -= self.VELOCITAT # self.x2 = self.x2 - self.VELOCITAT
 
-        # Condicions if per mirar si les dues bases s'han sortit de la finestra o no
-
         # Primera condició: 
-        # Mirem si la posició X de la primera base més de la seva amplada(self.AMPLADA)
-        # és menor que 0
+        # Mirem si la posició X de la primera base més de la seva 
+        # amplada(self.AMPLADA) és menor que 0
         if self.x1 + self.AMPLADA < 0:
-            # En el cas que sigui cert, li sumem la coordenada X de la segona base 
-            # més de la seva amplada de manera que aquesta estarà al seu darrere
+            # En el cas que sigui cert, li sumem la coordenada X 
+            # de la segona base més de la seva amplada de manera 
+            # que aquesta estarà al seu darrere
             self.x1 = self.x2 + self.AMPLADA
 
         # Segona condició:
-        # Fem el mateix que abans però aquesta vegada amb la segona base
+        # Fem el mateix que abans però aquesta vegada amb la segona 
+        # base
         if self.x2 + self.AMPLADA < 0:
-            # En el cas que la condició sigui cert, li sumem la posició X de la 
-            # primera base més de la seva amplada 
+            # En el cas que aquesta condició sigui cert, li sumem la 
+            # posició X de la primera base més de la seva amplada 
             self.x2 = self.x1 + self.AMPLADA
 
     # Creem el mètode dibuixar() per a dibuixar les dues bases i li donem 
@@ -350,16 +350,16 @@ def dibuixar_elements(finestra, ocells, columnes, bases, puntuació, GEN):
     pygame.display.update() # Actualitzem els canvis
 
 # Creem la funció main() i que rebrà com a paràmetres 
-# els genomes i les seves configuracions
+# els genomes i les seves respectives configuracions
 def main(genomes, configuració):
 
     global GEN # Fem que GEN sigui una variable global
     GEN += 1 # Per cada evolució li sumarem +1 a la constant GEN
     finestra = FINESTRA # Fem que la variable finestra sigui igual que FINESTRA
 
-    bases = Base(500) # Li introduïm la posició Y de les dues bases
-    columnes = [Columna(600)] # Especifiquem la coordenada X de la 
-    # columna de dalt i la d'avall
+    bases = Base(500) # Establim la posició Y de les dues bases
+    columnes = [Columna(600)] # Especifiquem la coordenada X de 
+    # la columna de dalt i la d'avall
 
     partida = True # Variable partida que servirà per a l'algoritme perquè sàpiga 
     # quan generar o no una nova generació
@@ -370,8 +370,8 @@ def main(genomes, configuració):
     ge = [] # Llista per a emmagatzemar els genomes d'una generació 
     ocells = [] # Llista per a guardar a cada ocell d'una població
 
-    # Guardem l'índex de cada genoma a la variable _, mentre que el 
-    # mateix genoma s'emmagatzemarà al variable genoma
+    # Guardem l'índex de cada genoma a la variable _, mentre 
+    # que el mateix genoma es guardarà al variable genoma
     for _, genoma in genomes:
 
         # Creem cada xarxa neuronal que controlarà a cada genoma
@@ -379,8 +379,8 @@ def main(genomes, configuració):
 
         xarxes.append(xarxa) # Afegim la xarxa creada a la llista xarxes
 
-        # Creem un ocell per a cada genoma especificant-li la seva 
-        # coordenada X i Y i ho agreguem a la llista ocells
+        # Per a cada genoma generem un ocell concretant-li la seva 
+        # coordenada X i Y i, després, ho agreguem a la llista ocells
         ocells.append(Ocell(200, 250)) 
 
         genoma.fitness = 0 # Valor inicial del fitness de cada genoma 
@@ -412,8 +412,8 @@ def main(genomes, configuració):
                 # En el cas que sigui cert, farem que columna_índex sigui 1 
                 columna_índex = 1
 
-        # En el cas que no hi quedin més ocell fem que la variable 
-        # partida sigui False
+        # En el cas que no hi quedin més ocell a la partida 
+        # fem que la variable partida sigui False
         else: 
             partida = False 
 
@@ -421,8 +421,8 @@ def main(genomes, configuració):
         # i els mateixos ocells al variable ocell
         for índex, ocell in enumerate(ocells):
 
-            # Per cada frame li sumem +0.1 al fitness del genoma emprant l'índex 
-            # de l'ocell per a obtenir el genoma que representi a aquest 
+            # Per cada frame, sumem +0.1 al fitness del genoma 
+            # emprant l'índex de l'ocell que el representa
             ge[índex].fitness += 0.1 
 
             # Fem que cada ocell es mogui a partir del mètode moviment()
@@ -438,8 +438,8 @@ def main(genomes, configuració):
                 ocell.saltar() # En el cas que es compleixi això, l'ocell 
                 # saltarà a través del mètode saltar() 
 
-        # Creem la llista eliminar_columnes per tal d'afegir aquelles 
-        # columnes que s'hagin sortit de la finestra
+        # Creem la llista eliminar_columnes per tal d'agregar 
+        # aquelles columnes que s'hagin sortit de la finestra
         eliminar_columnes = [] 
 
         # Guardem les columnes a la variable columna
@@ -449,27 +449,27 @@ def main(genomes, configuració):
             # índex i a cada un d'aquest al variable ocell
             for índex, ocell in enumerate(ocells):
 
-                # Mirem si cada ocell s'ha xocat o no amb la columna 
-                # de dalt o la d'avall a partir del mètode col·lisió() 
+                # Emprem el mètode col·lisió() de la classe Columna per 
+                # a veure si els ocells s'han xocat o no amb les columnes
                 if columna.col·lisió(ocell):
 
-                    # En el cas que sigui verdader, restem -1 al valor
-                    # del fitness d'aquell genoma
+                    # En el cas que això sigui veritabler, restem 
+                    # -1 al valor del fitness d'aquell genoma
                     ge[índex].fitness -= 1 
 
                     # Eliminem a l'ocell que s'ha xocat de la llista ocells
                     ocells.pop(índex) 
 
-                    # Suprimim la xarxa neuronal que correspongui a aquest 
-                    # ocell de la llista xarxes
+                    # Suprimim la xarxa neuronal que el controla de la 
+                    # llista xarxes
                     xarxes.pop(índex)
                     
-                    # Abolim al genoma que correspongui a aquest ocell de la 
-                    # llista ge
+                    # Abolim al genoma que aquest ocell estava representant 
+                    # de la llista ge
                     ge.pop(índex) 
 
                 # Veiem si l'ocell ha passat o no per la columna en 
-                # funció de la seva coordenada X i la de la d'aquesta
+                # funció de la seva coordenada X i la de la columna
                 if not columna.passat and (ocell.x > columna.x): 
 
                     # En el cas que es compleixi això, farem que l'atribut 
@@ -514,8 +514,8 @@ def main(genomes, configuració):
         # índex i ocell respectivament
         for índex, ocell in enumerate(ocells):
 
-            # Mirem si l'ocell s'ha xocat o no amb la base i també veurem 
-            # si s'ha sortit o no per la part superior de la finestra
+            # Mirem si cada ocell s'ha xocat o no amb les dues bases 
+            # o si s'ha sortit per la part superior de la finestra
             if ocell.y + ocell.imatge.get_height() >= 500 or ocell.y < 0: 
 
                 # En el cas que sigui cert, restem -1 al fitness 
@@ -537,9 +537,9 @@ def main(genomes, configuració):
         # Passem les coses que volem dibuixar a la funció dibuixar_elements
         dibuixar_elements(finestra, ocells, columnes, bases, puntuació, GEN) 
 
-# Creem la funció executar() i rebrà la variable 
+# Creem la funció importar() i rebrà la variable 
 # configuració_ruta com a paràmetre
-def executar(configuració_ruta):
+def importar(configuració_ruta):
    
     # Importem les '5 seccions' del fitxer de configuració i ho guardem a la variable 
     # configuració
@@ -568,5 +568,5 @@ if __name__ == '__main__':
     configuració_ruta = os.path.join(local_ruta, "config.txt") 
 
     # Li donem la ruta del fitxer de 
-    # configuració a la funció executar()
-    executar(configuració_ruta) 
+    # configuració a la funció importar()
+    importar(configuració_ruta) 
