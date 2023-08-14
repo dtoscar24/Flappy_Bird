@@ -9,7 +9,7 @@
 fitness_criterion     = max   
 
 # Llindar (threshold) del fitness
-fitness_threshold     = 100 
+fitness_threshold     = 100
 
 # Nombre d'individus en una població
 pop_size              = 5         
@@ -25,14 +25,14 @@ reset_on_extinction   = False
 
 # Configuracions de les funcions d'activació de les neurones:
 
-# Funció d'activació per defecte que farà servir la xarxa neuronal 
-# que controla al genoma
+# Funció d'activació per defecte que farà servir cada neurona
+# d'una xarxa nueronal
 activation_default      = sigmoid
 
 # Probabilitat de canviar-se de funció d'activació (0.5 --> 50%)
 activation_mutate_rate  = 0.5
 
-# L'altra funció d'activació que pot elegir la xarxa neuronal
+# L'altra funció d'activació que pot elegir les neurones
 activation_options      = tanh
 
 
@@ -45,7 +45,7 @@ aggregation_default     = sum
 # Possibilitat de canviar-se d'opció agregació
 aggregation_mutate_rate = 0.0      
 
-# Opcions d'agregació que es poden elegir
+# Altres agregacions que es poden elegir
 aggregation_options     = sum     
 
 
@@ -64,13 +64,13 @@ bias_max_value          = 30.0
 # Valor mínim que pot tindre el bias
 bias_min_value          = -30.0    
 
-# Quant de gran o petit canviarà el valor de bias
+# Quant de gran o petit canviarà el valor del bias
 bias_mutate_power       = 0.5      
 
 # La probabilitat de mutar el bias (0.7 --> 70%)
 bias_mutate_rate        = 0.7      
 
-# La possibilitat de reemplaçar el valor del bias per una de nova
+# La possibilitat de reemplaçar el valor del bias per un de nou
 bias_replace_rate       = 0.1     
 
 
@@ -80,18 +80,18 @@ bias_replace_rate       = 0.1
 # Fiquem les coses que no existeixen en un genoma a l'altre
 compatibility_disjoint_coefficient = 1.0    
 
-# Mesclem els pesos dels dos genomes de manera que els resultats ens sortirà 
-# de forma compensada un de l'altre
+# Mesclem els pesos dels dos genomes de manera que els 
+# resultats ens sortirà de forma compensada un de l'altre
 compatibility_weight_coefficient   = 0.5
 
 
 
-# Probabilitat d'agregar o eliminar una connexió:
+# Probabilitat d'agregar o d'eliminar una connexió:
 
-# Possibilitat d'agregar una connexió (50%)
+# Possibilitat d'afegir una connexió (50%)
 conn_add_prob           = 0.5  
 
-# Possibilitat d'eliminar una connexió (50%)
+# Possibilitat de suprimir una connexió (50%)
 conn_delete_prob        = 0.5      
 
 
@@ -113,12 +113,12 @@ initial_connection      = full
 
 
 
-# Probabilitat d'agregar o abolir una neurona:
+# Probabilitat d'agregar o d'abolir una neurona:
 
 # Possibilitat d'afegir una neurona (0.2 --> 20%)
 node_add_prob           = 0.2  
 
-# Possibilitat de suprimir una neurona (0.2 --> 20%)
+# Possibilitat d'eliminar una neurona (0.2 --> 20%)
 node_delete_prob        = 0.2     
 
 
@@ -156,12 +156,12 @@ response_mutate_power   = 0.0
 # La probabilitat de mutar el valor de la resposta 
 response_mutate_rate    = 0.0   
 
-# La possibilitat de reemplaçar el valor de la resposta per una de nova
+# La possibilitat de reemplaçar el valor de la resposta per un de nou
 response_replace_rate   = 0.0      
 
 
 
-# Configuracions del pes de la connexió:
+# Configuracions del pes de cada connexió:
 
 # Mitjana inicial de tots els pesos
 weight_init_mean        = 0.0    
@@ -175,23 +175,23 @@ weight_max_value        = 30.0
 # Valor mínim que pot tindre el pes
 weight_min_value        = -30.0      
 
-# Quant de gran o petit canviarà els valors dels pesos 
+# Quant de gran o petit canviarà el valor del pes 
 weight_mutate_power     = 0.5 
 
-# Probabilitat de mutació en els valors dels pesos
+# Probabilitat de mutació en el valor del pes 
 weight_mutate_rate      = 0.8     
 
-# Possibilitat de reemplaçar el valor d'un pes per un altre de nou 
+# Possibilitat de reemplaçar el valor del pes per un altre de nou 
 weight_replace_rate     = 0.1        
 
 
 
 
-# Secció per a especificar les configuracions de les espècies:
+# Secció per a especificar la configuració de les espècies:
 [DefaultSpeciesSet]
 
-# Establim un llindar perquè l'algoritme sàpiga quan un individu 
-# pertany a una espècie o a una altra
+# Establim un llindar perquè l'algoritme sàpiga quan un 
+# individu pertany a una espècie o a una altra
 compatibility_threshold = 3.0        
 
 
@@ -220,5 +220,5 @@ species_elitism      = 2
 # Nombre dels millors individus que passaran a la següent generació sense canvis
 elitism            = 2      
 
-# La probabilitat que hi ha que els millors individus passin a la següent població
+# La possibilitat que hi ha que els millors individus passin a la següent població
 survival_threshold = 0.2            
