@@ -6,4 +6,5 @@ En aquest repositori trobaràs tot el codi comentat per damunt. L'objectiu princ
 
 # Com executar el codi:
 
-1. Has d'importar la carperta Flappy_Bird a Visual Studio Code i executar el fitxer flappy.py
+1. Has de descarregar-te la carpeta **imatges**, el fitxer **config.txt** i **flappy.py** i ficar-ho a una carpeta (ho has de crear tu).
+2. Has d'importar la carpeta que has creat a Visual Studio Code i executar el fitxer **flappy.py**
