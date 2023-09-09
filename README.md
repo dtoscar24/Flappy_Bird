@@ -11,7 +11,7 @@ En aquest repositori trobaràs tot el codi comentat per damunt. L'objectiu princ
 > 2. Has d'importar la carpeta que has creat a Visual Studio Code i executar el fitxer **flappy.py**
 
 > [!NOTE]
-> Llenguatge que es va fer servir: Python (versió **3.11.4**=
+> Llenguatge que es va fer servir: Python (versió **3.11.4**)
 > 
 > Editor de codi emprat: **Visual Studio Code**
 > 
