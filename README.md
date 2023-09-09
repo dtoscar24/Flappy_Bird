@@ -13,12 +13,9 @@ En aquest repositori trobaràs tot el codi comentat per damunt. L'objectiu princ
 > [!NOTE]
 > Versió de Python: **3.11.4**
 > Editor de codi emprat: Visual Studio Code
-
 > Llibreries o biblioteques utilitzats:
-
 > **Llibreries**:
 > - Neat-python (versió **0.92**)
 > - Pygame (versió **2.5.0**)
-
 > **Biblioteques**:
 > - os i random
